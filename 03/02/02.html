@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        #canvas {border: 1px solid; width: 400px; height: 400px;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="200" height="200" ></canvas>    
+    <script>
+        // degree2radian
+        function d2r(degree) {
+            return degree * Math.PI / 180;
+        }
+
+        const ctx = document.getElementById("canvas").getContext('2d');
+        console.log(ctx);
+        
+        // 배경 원 그리기
+        ctx.beginPath();
+        ctx.arc(100, 100, 100, d2r(0), d2r(360));
+
+        ctx.fillStyle = 'skyblue';
+        ctx.fill();
+
+        // 중점 변경(rotate)
+        ctx.translate(100, 100);
+
+        // 선 그리기 (분침)
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, -80)
+        ctx.strokeStyle = '#eee';
+        ctx.lineWidth = 8
+        ctx.stroke();
+
+        // 선 그리기 (시침)
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.lineTo(0, -60);
+        ctx.strokeStyle = '#bbb';
+        ctx.lineWidth = 6
+        ctx.stroke();
+
+        // 선 그리기 (초침)
+        ctx.beginPath();
+        ctx.lineWidth = 2
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = '#555';
+        ctx.moveTo(0, 0);
+        ctx.rotate(d2r(102));
+        ctx.lineTo(0, -80);
+        ctx.stroke();
+        // ctx.rotate(-d2r(60));
+
+    </script>
+</body>
+</html>
